@@ -133,13 +133,13 @@ int main()
     
     if(isRechable(maze)){
         printf("Path Possible");
-        
+        print(visited);
     }
     else
     {
         printf("Path not possible");
     }
 
-    print(visited);
+    
     return 0;
 }
