@@ -60,7 +60,7 @@ int isRechable(int maze[N][N])
         pop();
         push(temp);
 
-        if (i == fx && j == fy) { 
+        if (i == fy && j == fx) { 
 			return 1; 
 		} 
 
@@ -119,7 +119,8 @@ void print(int vis[N][N])
 
 int main()
 {
-    //memset(sol,1,sizeof(sol));
+    int maze_edit[N][N];
+    
     int maze[N][N] = { 
 		{ 1, 0, 1, 1, 1 }, 
 		{ 1, 1, 1, 0, 1 }, 
@@ -128,17 +129,88 @@ int main()
         { 0, 0, 0, 1, 1 } 
 	};
 
-    fx = 3; 
-	fy = 3; 
-    
-    if(isRechable(maze)){
-        printf("Path Possible");
-        print(sol);
+    printf("------------------------RAT MAZE------------------------\n");
+    printf("\n1.Use the pre-defined Maze");
+    printf("\n2.Initialize your own maze(maze has to be 30 x 30)\n");
+    int choice;
+    scanf("%d",&choice);
+    if(choice == 1)
+    {
+        printf("The maze which is initialized is as follows\n");
+        print(maze);
+        printf("Enter the destination co-ordinates(first X then Y\n");
+        scanf("%d%d",&fx,&fy);
+        printf("\n");
+        if(fx < 0 || fx > 29){
+            printf("Invalid Co-ordinates\n");
+            printf("Exiting.............");
+            return 0;
+        }
+        else if(fy < 0 || fy > 29){
+            printf("Invalid Co-ordinates\n");
+            printf("Exiting.............");
+            return 0;
+        }
+        else
+        {
+            printf("Processing..............\n");
+            if(isRechable(maze)){
+                printf("Path Possible");
+                print(sol);
+                printf("\nThe path that has to be followed by the rat is given by 0's\n");
+            }
+            else
+            {
+                printf("Path not possible");
+            }
+        }
+        
+    }
+    else if(choice==2)
+    {
+        printf("\nEnter the maze one value at a time\n");
+        for(int k=0;k<N;k++)
+        {
+            for(int l=0;l<N;l++)
+            {
+                scanf("%d",maze_edit[k][l]);
+            }
+        }
+        printf("The maze which is initialized is as follows\n");
+        print(maze);
+        printf("Enter the destination co-ordinates(first X then Y\n");
+        scanf("%d%d",&fx,&fy);
+        printf("\n");
+        if(fx < 0 || fx > 29){
+            printf("Invalid Co-ordinates\n");
+            printf("Exiting.............");
+            return 0;
+        }
+        else if(fy < 0 || fy > 29){
+            printf("Invalid Co-ordinates\n");
+            printf("Exiting.............");
+            return 0;
+        }
+        else
+        {
+            printf("Processing..............\n");
+            if(isRechable(maze_edit)){
+                printf("Path Possible");
+                print(sol);
+                printf("\nThe path that has to be followed by the rat is given by 0's\n");
+            }
+            else
+            {
+                printf("Path not possible");
+            }
+        }
+
     }
     else
     {
-        printf("Path not possible");
+        return 0;
     }
+    
 
     return 0;
 }
