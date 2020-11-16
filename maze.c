@@ -138,7 +138,7 @@ int main()
     {
         printf("The maze which is initialized is as follows\n");
         print(maze);
-        printf("Enter the destination co-ordinates(first X then Y\n");
+        printf("Enter the destination co-ordinates(first X then Y)\n");
         scanf("%d%d",&fx,&fy);
         printf("\n");
         if(fx < 0 || fx > 29){
